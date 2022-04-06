@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="holder1">
+        <h3>Notes</h3>
+        <button>+</button>
+        <app-title *ngFor="let notelist of notes" [notelists]="notelist"></app-title>
+    </div>
+    
+    <div class="holder2">
+        <app-content></app-content>
+    </div>
+</div>
+
+
