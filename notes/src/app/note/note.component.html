@@ -1,13 +1,23 @@
 <div class="container">
     <div class="holder1">
-        <h3>Notes</h3>
-        <button>+</button>
-        <app-title *ngFor="let notelist of notes" [notelists]="notelist"></app-title>
+        <div class="header">
+            <h3>Notes</h3>
+            <button class="add">+</button>
+        </div>
+        <app-title *ngFor="let notelist of notes" [notelists]="notelist" (noteinfoEmiter)="getInfo($event)"></app-title>
     </div>
-    
+
     <div class="holder2">
-        <app-content></app-content>
+
+        <div>
+            <app-content *ngFor="let notelist of notes" [notelists]="notelist" [ngStyle]="{
+                'display': notelist.title === noteTitles ?'block' : 'none'
+                }"></app-content>
+            <input type="text">
+            <input type="text">
+        </div>
+
+        <button>revert</button>
+        <button (click) = addNotes()>save</button>
     </div>
 </div>
-
-

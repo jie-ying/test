@@ -14,3 +14,19 @@
 .holder2{
     width: 50%;
 }
+
+.header{
+    display: flex;
+    flex-direction: row;
+}
+
+.add{
+    font-size: 30px;
+    border: none;
+    margin-left: 88%;
+    background-color: transparent;
+}
+
+.add:active{
+    font-size: 25px;
+}

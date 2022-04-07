@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Notes } from 'src/app/interface/notes.model';
 
 @Component({
@@ -9,10 +9,15 @@ import { Notes } from 'src/app/interface/notes.model';
 export class TitleComponent implements OnInit {
 
   @Input() notelists!: Notes;
+  @Output() noteinfoEmiter = new EventEmitter();
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
+
+  noteInfo(){
+    this.noteinfoEmiter.emit(this.notelists.title)
+    console.log(this.notelists)
   }
 
 }
