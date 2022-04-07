@@ -38,14 +38,22 @@ export class NoteComponent implements OnInit {
     this.noteService.createNotes({ title, content } as Notes).subscribe((newNotes) => {
       this.notes.push(newNotes);
     })    
-    console.log(title)
-   
+    alert("Do you want to save?");
+    title = '';
+    content = '';
   }
 
   deleteNotes(id: number){
     this.noteId = id;
     this.notes = this.notes.filter((notelist) => notelist.id !== id);
 
+  }
+
+  updateNote(): void{
+    this.noteService.updateNotes(this.note).subscribe((res) => {
+      console.log(res);
+    });
+    this.getNote();
   }
 
 }
