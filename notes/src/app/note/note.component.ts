@@ -9,12 +9,10 @@ import { NotesService } from '../service/notes.service';
 })
 export class NoteComponent implements OnInit {
 
-  note = {
-    title: '',
-    content: '',
-  }
-  notes!: Notes[];
+  note!: Notes;
+  notes: Notes[] = [];
   noteTitles!: any;
+  noteId!: any;
 
   constructor(private noteService: NotesService) { }
 
@@ -35,18 +33,19 @@ export class NoteComponent implements OnInit {
     console.log(this.note.content);
   }
 
-  addNotes(){    
-    const data = {
-      title: this.note.title,
-      content: this.note.content
-    }
-    this.noteService.createNotes(data).subscribe((res) =>{
-      console.log(res);
-      this.getNote();
-    })
-
-    console.log(data.title)
+  addNotes(title: string, content: string): void{
+    if(!title && !content){return};
+    this.noteService.createNotes({ title, content } as Notes).subscribe((newNotes) => {
+      this.notes.push(newNotes);
+    })    
+    console.log(title)
    
+  }
+
+  deleteNotes(id: number){
+    this.noteId = id;
+    this.notes = this.notes.filter((notelist) => notelist.id !== id);
+
   }
 
 }

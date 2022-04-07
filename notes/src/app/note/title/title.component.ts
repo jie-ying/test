@@ -10,6 +10,7 @@ export class TitleComponent implements OnInit {
 
   @Input() notelists!: Notes;
   @Output() noteinfoEmiter = new EventEmitter();
+  @Output() deleteEmiter = new EventEmitter();
 
   constructor() { }
 
@@ -18,6 +19,10 @@ export class TitleComponent implements OnInit {
   noteInfo(){
     this.noteinfoEmiter.emit(this.notelists.title)
     console.log(this.notelists)
+  }
+
+  deleteBtn(){
+    this.deleteEmiter.emit(this.notelists.id);
   }
 
 }

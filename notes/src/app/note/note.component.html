@@ -4,7 +4,8 @@
             <h3>Notes</h3>
             <button class="add">+</button>
         </div>
-        <app-title *ngFor="let notelist of notes" [notelists]="notelist" (noteinfoEmiter)="getInfo($event)"></app-title>
+        <app-title *ngFor="let notelist of notes" [notelists]="notelist" (noteinfoEmiter)="getInfo($event)"
+            (deleteEmiter)="deleteNotes($event)"></app-title>
     </div>
 
     <div class="holder2">
@@ -13,11 +14,11 @@
             <app-content *ngFor="let notelist of notes" [notelists]="notelist" [ngStyle]="{
                 'display': notelist.title === noteTitles ?'block' : 'none'
                 }"></app-content>
-            <input type="text">
-            <input type="text">
+            <input type="text" #newTitle />
+            <input type="text" #newContent />
         </div>
 
         <button>revert</button>
-        <button (click) = addNotes()>save</button>
+        <button (click) = addNotes(newTitle.value,newContent.value)>save</button>
     </div>
 </div>
